@@ -1,0 +1,19 @@
+body {
+  font-size: 100%;
+  color: #3D4140;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+.wrapper {
+  max-width: 1200px;
+  padding: 0 4%;
+  margin: 0 auto;
+}
+/*# sourceMappingURL=common.css.map */

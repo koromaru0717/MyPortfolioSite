@@ -1,0 +1,147 @@
+@charset "UTF-8";
+body {
+  font-size: 100%;
+  color: #3D4140;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+.wrapper {
+  max-width: 1200px;
+  padding: 0 4%;
+  margin: 0 auto;
+}
+
+#header {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li {
+  list-style: none;
+}
+
+@media (max-width: 840px) {
+  nav {
+    display: none;
+  }
+}
+nav.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 80;
+  background-color: #fff;
+}
+
+ul {
+  display: flex;
+}
+@media (max-width: 840px) {
+  ul {
+    display: block;
+    font-size: 2rem;
+  }
+}
+ul li {
+  margin-left: 1.5rem;
+}
+@media (max-width: 840px) {
+  ul li {
+    margin-left: 0;
+    text-align: center;
+    margin-bottom: 60px;
+  }
+}
+ul li img {
+  width: 20px;
+}
+@media (max-width: 840px) {
+  ul li img {
+    width: 30px;
+  }
+}
+ul:last-child {
+  margin-left: 0;
+}
+ul.sns-area {
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 840px) {
+  ul.sns-area {
+    gap: 2rem;
+  }
+}
+
+/*==================================================
+ハンバーガーメニュー
+===================================*/
+.openbtn1 {
+  display: none;
+  position: relative;
+  /*ボタン内側の基点となるためrelativeを指定*/
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 1px;
+}
+@media (max-width: 840px) {
+  .openbtn1 {
+    display: block;
+    z-index: 9999;
+  }
+}
+.openbtn1 span {
+  display: inline-block;
+  transition: all 0.4s;
+  /*アニメーションの設定*/
+  position: absolute;
+  left: 14px;
+  height: 3px;
+  border-radius: 3px;
+  background: #333;
+  width: 45%;
+}
+.openbtn1 span:nth-of-type(1) {
+  top: 15px;
+}
+.openbtn1 span:nth-of-type(2) {
+  top: 23px;
+}
+.openbtn1 span:nth-of-type(3) {
+  top: 31px;
+}
+.openbtn1.active span {
+  /*activeクラスが付与されると線が回転して×に*/
+}
+.openbtn1.active span:nth-of-type(1) {
+  top: 18px;
+  left: 18px;
+  transform: translateY(6px) rotate(-45deg);
+  width: 30%;
+}
+.openbtn1.active span:nth-of-type(2) {
+  opacity: 0;
+  /*真ん中の線は透過*/
+}
+.openbtn1.active span:nth-of-type(3) {
+  top: 30px;
+  left: 18px;
+  transform: translateY(-6px) rotate(45deg);
+  width: 30%;
+}
+/*# sourceMappingURL=style.css.map */
