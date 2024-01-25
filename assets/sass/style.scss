@@ -13,31 +13,111 @@ li {
   list-style: none;
 }
 
-nav {
-  @include va.mq(va.$bp-medium) {
+header {
+  nav {
+    @include va.mq(va.$bp-medium) {
+      display: none;
+    }
+
+    &.active {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 80;
+      background-color: #fff;
+    }
+  }
+
+  /*==================================================
+ハンバーガーメニュー
+===================================*/
+
+  .openbtn1 {
     display: none;
+
+    @include va.mq(va.$bp-medium) {
+      display: block;
+      z-index: 9999;
+    }
+
+    position: relative;
+
+    /*ボタン内側の基点となるためrelativeを指定*/
+    // background: #57a2c7;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border-radius: 1px;
+
+    span {
+      display: inline-block;
+      transition: all .4s;
+
+      /*アニメーションの設定*/
+      position: absolute;
+      left: 14px;
+      height: 3px;
+      border-radius: 3px;
+      background: #333;
+      width: 45%;
+
+      &:nth-of-type(1) {
+        top: 15px;
+      }
+
+      &:nth-of-type(2) {
+        top: 23px;
+      }
+
+      &:nth-of-type(3) {
+        top: 31px;
+      }
+    }
+
+    &.active span {
+
+      /*activeクラスが付与されると線が回転して×に*/
+      &:nth-of-type(1) {
+        top: 18px;
+        left: 18px;
+        transform: translateY(6px) rotate(-45deg);
+        width: 30%;
+      }
+
+      &:nth-of-type(2) {
+        opacity: 0;
+        /*真ん中の線は透過*/
+      }
+
+      &:nth-of-type(3) {
+        top: 30px;
+        left: 18px;
+        transform: translateY(-6px) rotate(45deg);
+        width: 30%;
+      }
+    }
   }
 
-  &.active {
+  ul {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 80;
-    background-color: #fff;
-  }
-}
 
-ul {
-  display: flex;
+    @include va.mq(va.$bp-medium) {
+      flex-direction: column;
+      font-size: 2rem;
+    }
 
-  @include va.mq(va.$bp-medium) {
-    display: block;
-    font-size: 2rem;
+    .sns-area {
+      @include va.mq(va.$bp-medium) {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1.75rem;
+      }
+    }
   }
 
   li {
@@ -72,72 +152,141 @@ ul {
   }
 }
 
+
+
 /*==================================================
-ハンバーガーメニュー
+フッター
 ===================================*/
+footer {
 
-.openbtn1 {
-  display: none;
+  /*==================================================
+  スクロールイベント
+  https://coco-factory.jp/ugokuweb/move01/9-1-4/
+  ===================================*/
 
-  @include va.mq(va.$bp-medium) {
-    display: block;
-    z-index: 9999;
-  }
-
-  position: relative;
-
-  /*ボタン内側の基点となるためrelativeを指定*/
-  // background: #57a2c7;
-  cursor: pointer;
-  width: 50px;
-  height: 50px;
-  border-radius: 1px;
-
-  span {
-    display: inline-block;
-    transition: all .4s;
-
-    /*アニメーションの設定*/
+  .scrolldown4 {
+    /*描画位置※位置は適宜調整してください*/
     position: absolute;
-    left: 14px;
-    height: 3px;
-    border-radius: 3px;
-    background: #333;
-    width: 45%;
+    bottom: 1%;
+    right: 10%;
+    /*矢印の動き1秒かけて永遠にループ*/
+    -webkit-animation: arrowmove 1s ease-in-out infinite;
+    animation: arrowmove 1s ease-in-out infinite;
+  }
 
-    &:nth-of-type(1) {
-      top: 15px;
+  /*下からの距離が変化して全体が下→上→下に動く*/
+  @-webkit-keyframes arrowmove {
+    0% {
+      bottom: 1%;
     }
 
-    &:nth-of-type(2) {
-      top: 23px;
+    50% {
+      bottom: 3%;
     }
 
-    &:nth-of-type(3) {
-      top: 31px;
+    100% {
+      bottom: 1%;
     }
   }
 
-  &.active span {
-
-    /*activeクラスが付与されると線が回転して×に*/
-    &:nth-of-type(1) {
-      top: 18px;
-      left: 18px;
-      transform: translateY(6px) rotate(-45deg);
-      width: 30%;
+  @keyframes arrowmove {
+    0% {
+      bottom: 1%;
     }
 
-    &:nth-of-type(2) {
-      opacity: 0;
-      /*真ん中の線は透過*/
+    50% {
+      bottom: 3%;
     }
 
-    &:nth-of-type(3) {
-      top: 30px;
-      left: 18px;
-      transform: translateY(-6px) rotate(45deg);
-      width: 30%;
+    100% {
+      bottom: 1%;
+    }
+  }
+
+  /*Scrollテキストの描写*/
+  .scrolldown4 span {
+    /*描画位置*/
+    position: absolute;
+    left: -16px;
+    bottom: 50px;
+    /*テキストの形状*/
+    color: va.$base-font-color;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* 矢印の描写 */
+  .scrolldown4:before {
+    content: "";
+    /*描画位置*/
+    position: absolute;
+    bottom: 40px;
+    right: -3px;
+    /*矢印の形状*/
+    width: 1px;
+    height: 10px;
+    background: va.$base-font-color;
+    transform: skewX(31deg);
+  }
+
+  // 矢印の棒
+  .scrolldown4:after {
+    content: "";
+    /*描画位置*/
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    /*矢印の形状*/
+    width: 1px;
+    height: 50px;
+    background: va.$base-font-color;
+  }
+
+  .footer-site-map {
+    img {
+      margin-bottom: 1.75rem;
+    }
+
+    .footer-list-area {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      @include va.mq(va.$bp-medium) {
+        flex-direction: column;
+        align-items: flex-start
+      }
+
+      .footer-list {
+        display: flex;
+        gap: 2.5rem;
+
+        @include va.mq(va.$bp-medium) {
+          flex-direction: column;
+          gap: 1.75rem;
+        }
+      }
+
+      p {
+        font-size: 0.75rem;
+
+        @include va.mq(va.$bp-medium) {
+          padding-top: 1.75rem;
+        }
+      }
+    }
+
+    .sns-area {
+      display: flex;
+      gap: 30px;
+
+      img {
+        width: 20px;
+
+        @include va.mq(va.$bp-medium) {
+          width: 30px;
+        }
+      }
     }
   }
 }

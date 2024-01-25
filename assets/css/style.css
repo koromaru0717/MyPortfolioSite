@@ -29,12 +29,17 @@ li {
   list-style: none;
 }
 
+header {
+  /*==================================================
+  ハンバーガーメニュー
+  ===================================*/
+}
 @media (max-width: 840px) {
-  nav {
+  header nav {
     display: none;
   }
 }
-nav.active {
+header nav.active {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -46,51 +51,7 @@ nav.active {
   z-index: 80;
   background-color: #fff;
 }
-
-ul {
-  display: flex;
-}
-@media (max-width: 840px) {
-  ul {
-    display: block;
-    font-size: 2rem;
-  }
-}
-ul li {
-  margin-left: 1.5rem;
-}
-@media (max-width: 840px) {
-  ul li {
-    margin-left: 0;
-    text-align: center;
-    margin-bottom: 60px;
-  }
-}
-ul li img {
-  width: 20px;
-}
-@media (max-width: 840px) {
-  ul li img {
-    width: 30px;
-  }
-}
-ul:last-child {
-  margin-left: 0;
-}
-ul.sns-area {
-  display: flex;
-  justify-content: center;
-}
-@media (max-width: 840px) {
-  ul.sns-area {
-    gap: 2rem;
-  }
-}
-
-/*==================================================
-ハンバーガーメニュー
-===================================*/
-.openbtn1 {
+header .openbtn1 {
   display: none;
   position: relative;
   /*ボタン内側の基点となるためrelativeを指定*/
@@ -100,12 +61,12 @@ ul.sns-area {
   border-radius: 1px;
 }
 @media (max-width: 840px) {
-  .openbtn1 {
+  header .openbtn1 {
     display: block;
     z-index: 9999;
   }
 }
-.openbtn1 span {
+header .openbtn1 span {
   display: inline-block;
   transition: all 0.4s;
   /*アニメーションの設定*/
@@ -116,32 +77,199 @@ ul.sns-area {
   background: #333;
   width: 45%;
 }
-.openbtn1 span:nth-of-type(1) {
+header .openbtn1 span:nth-of-type(1) {
   top: 15px;
 }
-.openbtn1 span:nth-of-type(2) {
+header .openbtn1 span:nth-of-type(2) {
   top: 23px;
 }
-.openbtn1 span:nth-of-type(3) {
+header .openbtn1 span:nth-of-type(3) {
   top: 31px;
 }
-.openbtn1.active span {
+header .openbtn1.active span {
   /*activeクラスが付与されると線が回転して×に*/
 }
-.openbtn1.active span:nth-of-type(1) {
+header .openbtn1.active span:nth-of-type(1) {
   top: 18px;
   left: 18px;
   transform: translateY(6px) rotate(-45deg);
   width: 30%;
 }
-.openbtn1.active span:nth-of-type(2) {
+header .openbtn1.active span:nth-of-type(2) {
   opacity: 0;
   /*真ん中の線は透過*/
 }
-.openbtn1.active span:nth-of-type(3) {
+header .openbtn1.active span:nth-of-type(3) {
   top: 30px;
   left: 18px;
   transform: translateY(-6px) rotate(45deg);
   width: 30%;
+}
+header ul {
+  display: flex;
+}
+@media (max-width: 840px) {
+  header ul {
+    flex-direction: column;
+    font-size: 2rem;
+  }
+}
+@media (max-width: 840px) {
+  header ul .sns-area {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.75rem;
+  }
+}
+header li {
+  margin-left: 1.5rem;
+}
+@media (max-width: 840px) {
+  header li {
+    margin-left: 0;
+    text-align: center;
+    margin-bottom: 60px;
+  }
+}
+header li img {
+  width: 20px;
+}
+@media (max-width: 840px) {
+  header li img {
+    width: 30px;
+  }
+}
+header:last-child {
+  margin-left: 0;
+}
+header.sns-area {
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 840px) {
+  header.sns-area {
+    gap: 2rem;
+  }
+}
+
+/*==================================================
+フッター
+===================================*/
+footer {
+  /*==================================================
+  スクロールイベント
+  https://coco-factory.jp/ugokuweb/move01/9-1-4/
+  ===================================*/
+  /*下からの距離が変化して全体が下→上→下に動く*/
+  /*Scrollテキストの描写*/
+  /* 矢印の描写 */
+}
+footer .scrolldown4 {
+  /*描画位置※位置は適宜調整してください*/
+  position: absolute;
+  bottom: 1%;
+  right: 10%;
+  /*矢印の動き1秒かけて永遠にループ*/
+  -webkit-animation: arrowmove 1s ease-in-out infinite;
+  animation: arrowmove 1s ease-in-out infinite;
+}
+@-webkit-keyframes arrowmove {
+  0% {
+    bottom: 1%;
+  }
+  50% {
+    bottom: 3%;
+  }
+  100% {
+    bottom: 1%;
+  }
+}
+@keyframes arrowmove {
+  0% {
+    bottom: 1%;
+  }
+  50% {
+    bottom: 3%;
+  }
+  100% {
+    bottom: 1%;
+  }
+}
+footer .scrolldown4 span {
+  /*描画位置*/
+  position: absolute;
+  left: -16px;
+  bottom: 50px;
+  /*テキストの形状*/
+  color: #3D4140;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+}
+footer .scrolldown4:before {
+  content: "";
+  /*描画位置*/
+  position: absolute;
+  bottom: 40px;
+  right: -3px;
+  /*矢印の形状*/
+  width: 1px;
+  height: 10px;
+  background: #3D4140;
+  transform: skewX(31deg);
+}
+footer .scrolldown4:after {
+  content: "";
+  /*描画位置*/
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  /*矢印の形状*/
+  width: 1px;
+  height: 50px;
+  background: #3D4140;
+}
+footer .footer-site-map img {
+  margin-bottom: 1.75rem;
+}
+footer .footer-site-map .footer-list-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (max-width: 840px) {
+  footer .footer-site-map .footer-list-area {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+footer .footer-site-map .footer-list-area .footer-list {
+  display: flex;
+  gap: 2.5rem;
+}
+@media (max-width: 840px) {
+  footer .footer-site-map .footer-list-area .footer-list {
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+}
+footer .footer-site-map .footer-list-area p {
+  font-size: 0.75rem;
+}
+@media (max-width: 840px) {
+  footer .footer-site-map .footer-list-area p {
+    padding-top: 1.75rem;
+  }
+}
+footer .footer-site-map .sns-area {
+  display: flex;
+  gap: 30px;
+}
+footer .footer-site-map .sns-area img {
+  width: 20px;
+}
+@media (max-width: 840px) {
+  footer .footer-site-map .sns-area img {
+    width: 30px;
+  }
 }
 /*# sourceMappingURL=style.css.map */
