@@ -7,12 +7,27 @@ $bp-medium: 840px;
 $bp-large: 1140px;
 $bp-extra-large: 1280px;
 
+// 高さ
+$header-height: 60px;
+
 @mixin mq ($bp) {
   @media (max-width: ($bp)) {
     @content;
   }
 }
 
-// 色
+/**カラーパレット**/
+// 文字
 $base-font-color: #3D4140;
+// 背景
+$base-background-color: #FAFAFA;
+// メインカラー
+$base-main-color: #DDEDEF;
+// アクセントカラー
+$accent-color: #4F7A70;
+// アニメーションカラー
+$main-object-color: #6CADB6;
+// 動的コンテンツカラー
+$dynamic-content-color: #F3F6F7;
+
 $light-font-color: #b98e51;
