@@ -153,6 +153,16 @@ header.sns-area {
   }
 }
 
+.sec-line {
+  background-color: #DDEDEF;
+  z-index: -1;
+  /* 左端に配置する場合は、leftを0に設定します。 */
+  left: 0;
+  /* 幅を100%に設定して親要素に合わせます。 */
+  width: 100%;
+  position: absolute;
+}
+
 /*==================================================
 メインビジュアル
 ===================================*/
@@ -162,6 +172,10 @@ header.sns-area {
   /*ボタン内spanの形状*/
   /*== 背景が流れる（中央から外） */
   /*hoverした際の形状*/
+  /*スクロールダウン全体の場所*/
+  /*下からの距離が変化して全体が下→上→下に動く*/
+  /*Scrollテキストの描写*/
+  /* 矢印の描写 */
 }
 #mainvisual .catch-copy {
   margin: 80px 0;
@@ -255,9 +269,7 @@ header.sns-area {
 #mainvisual .btn:hover .triangle {
   background: #4F7A70;
 }
-
-/*スクロールダウン全体の場所*/
-.scrolldown-main {
+#mainvisual .scrolldown-main {
   /*描画位置※位置は適宜調整してください*/
   position: absolute;
   bottom: 1%;
@@ -266,8 +278,6 @@ header.sns-area {
   -webkit-animation: arrowmove 1s ease-in-out infinite;
           animation: arrowmove 1s ease-in-out infinite;
 }
-
-/*下からの距離が変化して全体が下→上→下に動く*/
 @keyframes arrowmove {
   0% {
     bottom: 1%;
@@ -279,8 +289,7 @@ header.sns-area {
     bottom: 1%;
   }
 }
-/*Scrollテキストの描写*/
-.scrolldown-main span {
+#mainvisual .scrolldown-main span {
   /*描画位置*/
   position: absolute;
   left: -20px;
@@ -292,9 +301,7 @@ header.sns-area {
   /*縦書き設定*/
   writing-mode: vertical-rl;
 }
-
-/* 矢印の描写 */
-.scrolldown-main:before {
+#mainvisual .scrolldown-main:before {
   content: "";
   /*描画位置*/
   position: absolute;
@@ -306,8 +313,7 @@ header.sns-area {
   background: #3D4140;
   transform: skewX(-31deg);
 }
-
-.scrolldown-main:after {
+#mainvisual .scrolldown-main:after {
   content: "";
   /*描画位置*/
   position: absolute;
@@ -318,8 +324,7 @@ header.sns-area {
   height: 50px;
   background: #3D4140;
 }
-
-.context {
+#mainvisual .context {
   width: 100%;
   position: absolute;
   display: flex;
@@ -327,18 +332,15 @@ header.sns-area {
   align-items: center;
   top: 10%;
 }
-
-.context h1 {
+#mainvisual .context h1 {
   text-align: center;
   color: #fff;
   font-size: 50px;
 }
-
-.area {
+#mainvisual .area {
   height: calc(100vh - 60px);
 }
-
-.circles {
+#mainvisual .circles {
   position: absolute;
   top: 0;
   left: 0;
@@ -346,8 +348,7 @@ header.sns-area {
   height: 100%;
   overflow: hidden;
 }
-
-.circles li {
+#mainvisual .circles li {
   position: absolute;
   display: block;
   list-style: none;
@@ -358,8 +359,7 @@ header.sns-area {
           animation: animate 25s linear infinite;
   bottom: -150px;
 }
-
-.circles li:nth-child(1) {
+#mainvisual .circles li:nth-child(1) {
   border: 1px solid #6CADB6;
   left: 25%;
   width: 80px;
@@ -367,8 +367,7 @@ header.sns-area {
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
 }
-
-.circles li:nth-child(2) {
+#mainvisual .circles li:nth-child(2) {
   border: 1px solid #6CADB6;
   left: 10%;
   width: 20px;
@@ -378,8 +377,7 @@ header.sns-area {
   -webkit-animation-duration: 12s;
           animation-duration: 12s;
 }
-
-.circles li:nth-child(3) {
+#mainvisual .circles li:nth-child(3) {
   border: 1px solid #6CADB6;
   left: 70%;
   width: 20px;
@@ -387,8 +385,7 @@ header.sns-area {
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 }
-
-.circles li:nth-child(4) {
+#mainvisual .circles li:nth-child(4) {
   border: 1px solid #6CADB6;
   left: 40%;
   width: 60px;
@@ -398,8 +395,7 @@ header.sns-area {
   -webkit-animation-duration: 18s;
           animation-duration: 18s;
 }
-
-.circles li:nth-child(5) {
+#mainvisual .circles li:nth-child(5) {
   border: 1px solid #6CADB6;
   left: 65%;
   width: 20px;
@@ -407,8 +403,7 @@ header.sns-area {
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
 }
-
-.circles li:nth-child(6) {
+#mainvisual .circles li:nth-child(6) {
   border: 1px solid #6CADB6;
   left: 75%;
   width: 110px;
@@ -416,8 +411,7 @@ header.sns-area {
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
 }
-
-.circles li:nth-child(7) {
+#mainvisual .circles li:nth-child(7) {
   border: 1px solid #6CADB6;
   left: 35%;
   width: 150px;
@@ -425,8 +419,7 @@ header.sns-area {
   -webkit-animation-delay: 7s;
           animation-delay: 7s;
 }
-
-.circles li:nth-child(8) {
+#mainvisual .circles li:nth-child(8) {
   border: 1px solid #6CADB6;
   left: 50%;
   width: 25px;
@@ -436,8 +429,7 @@ header.sns-area {
   -webkit-animation-duration: 45s;
           animation-duration: 45s;
 }
-
-.circles li:nth-child(9) {
+#mainvisual .circles li:nth-child(9) {
   border: 1px solid #6CADB6;
   left: 20%;
   width: 15px;
@@ -447,8 +439,7 @@ header.sns-area {
   -webkit-animation-duration: 35s;
           animation-duration: 35s;
 }
-
-.circles li:nth-child(10) {
+#mainvisual .circles li:nth-child(10) {
   border: 1px solid #6CADB6;
   left: 85%;
   width: 150px;
@@ -458,7 +449,6 @@ header.sns-area {
   -webkit-animation-duration: 11s;
           animation-duration: 11s;
 }
-
 @-webkit-keyframes animate {
   0% {
     transform: translateY(0) rotate(0deg);
@@ -471,7 +461,6 @@ header.sns-area {
     border-radius: 50%;
   }
 }
-
 @keyframes animate {
   0% {
     transform: translateY(0) rotate(0deg);
@@ -484,6 +473,79 @@ header.sns-area {
     border-radius: 50%;
   }
 }
+
+/*==================================================
+アバウト
+===================================*/
+#about {
+  margin-bottom: 140px;
+  position: relative;
+}
+#about .about-sec-line {
+  height: 290px;
+  /* 上端に配置する場合は、topを0に設定します。TOPは各セクションによって変わる。 */
+  top: 24%;
+}
+@media (max-width: 540px) {
+  #about .about-sec-line {
+    height: 1200px;
+    top: 2%;
+  }
+}
+#about .sec-title {
+  font-size: 3.25rem;
+  font-weight: normal;
+}
+#about .sub-sec-title {
+  text-align: center;
+  margin: 80px 0;
+  font-size: 2.25rem;
+  font-weight: normal;
+}
+#about .services {
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 540px) {
+  #about .services {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+#about .services .service {
+  width: 24%;
+  border: 1px solid #333;
+  border-radius: 10px;
+  background-color: #fff;
+}
+@media (max-width: 540px) {
+  #about .services .service {
+    width: 100%;
+  }
+}
+#about .services .service .sec-no {
+  background-color: #4F7A70;
+  display: inline-block;
+  padding: 20px;
+  border-radius: 10px 0;
+  color: #fff;
+  font-weight: bold;
+}
+#about .services .service .sec-frame {
+  text-align: center;
+  margin: 20px 4% 50px;
+}
+#about .services .service img {
+  width: 100%;
+}
+#about .services .service .service-name {
+  margin: 40px 0;
+  font-weight: bold;
+}
+#about .services .service .service-caption {
+  text-align: left;
+}
+
 /*==================================================
 フッター
 ===================================*/

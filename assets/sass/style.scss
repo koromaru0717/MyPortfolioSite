@@ -152,6 +152,18 @@ header {
   }
 }
 
+.sec-line {
+  background-color: va.$base-main-color;
+  z-index: -1;
+  /* 左端に配置する場合は、leftを0に設定します。 */
+  left: 0;
+  /* 幅を100%に設定して親要素に合わせます。 */
+  width: 100%;
+  position: absolute;
+
+}
+
+
 /*==================================================
 メインビジュアル
 ===================================*/
@@ -269,222 +281,302 @@ header {
     background: va.$accent-color;
   }
 
-}
-
-// スクロールアニメーション
-/*スクロールダウン全体の場所*/
-.scrolldown-main {
-  /*描画位置※位置は適宜調整してください*/
-  position: absolute;
-  bottom: 1%;
-  right: 50%;
-  /*矢印の動き1秒かけて永遠にループ*/
-  animation: arrowmove 1s ease-in-out infinite;
-}
-
-/*下からの距離が変化して全体が下→上→下に動く*/
-@keyframes arrowmove {
-  0% {
+  // スクロールアニメーション
+  /*スクロールダウン全体の場所*/
+  .scrolldown-main {
+    /*描画位置※位置は適宜調整してください*/
+    position: absolute;
     bottom: 1%;
+    right: 50%;
+    /*矢印の動き1秒かけて永遠にループ*/
+    animation: arrowmove 1s ease-in-out infinite;
   }
 
-  50% {
-    bottom: 3%;
+  /*下からの距離が変化して全体が下→上→下に動く*/
+  @keyframes arrowmove {
+    0% {
+      bottom: 1%;
+    }
+
+    50% {
+      bottom: 3%;
+    }
+
+    100% {
+      bottom: 1%;
+    }
   }
 
-  100% {
-    bottom: 1%;
+  /*Scrollテキストの描写*/
+  .scrolldown-main span {
+    /*描画位置*/
+    position: absolute;
+    left: -20px;
+    bottom: 10px;
+    /*テキストの形状*/
+    color: va.$base-font-color;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    /*縦書き設定*/
+    -ms-writing-mode: tb-rl;
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+  }
+
+  /* 矢印の描写 */
+  .scrolldown-main:before {
+    content: "";
+    /*描画位置*/
+    position: absolute;
+    bottom: 0;
+    right: -6px;
+    /*矢印の形状*/
+    width: 1px;
+    height: 20px;
+    background: va.$base-font-color;
+    transform: skewX(-31deg);
+  }
+
+  .scrolldown-main:after {
+    content: "";
+    /*描画位置*/
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    /*矢印の形状*/
+    width: 1px;
+    height: 50px;
+    background: va.$base-font-color;
+  }
+
+  // メインビジュアルアニメーション
+  .context {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 10%
+  }
+
+  .context h1 {
+    text-align: center;
+    color: #fff;
+    font-size: 50px;
+  }
+
+  .area {
+    // background: #c7caff;
+    // background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+    // width: 100%;
+    height: calc(100vh - va.$header-height);
+  }
+
+  .circles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .circles li {
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    animation: animate 25s linear infinite;
+    bottom: -150px;
+
+  }
+
+  .circles li:nth-child(1) {
+    border: 1px solid va.$main-object-color;
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0s;
+  }
+
+
+  .circles li:nth-child(2) {
+    border: 1px solid va.$main-object-color;
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 2s;
+    animation-duration: 12s;
+  }
+
+  .circles li:nth-child(3) {
+    border: 1px solid va.$main-object-color;
+    left: 70%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 4s;
+  }
+
+  .circles li:nth-child(4) {
+    border: 1px solid va.$main-object-color;
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0s;
+    animation-duration: 18s;
+  }
+
+  .circles li:nth-child(5) {
+    border: 1px solid va.$main-object-color;
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0s;
+  }
+
+  .circles li:nth-child(6) {
+    border: 1px solid va.$main-object-color;
+    left: 75%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3s;
+  }
+
+  .circles li:nth-child(7) {
+    border: 1px solid va.$main-object-color;
+    left: 35%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 7s;
+  }
+
+  .circles li:nth-child(8) {
+    border: 1px solid va.$main-object-color;
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 15s;
+    animation-duration: 45s;
+  }
+
+  .circles li:nth-child(9) {
+    border: 1px solid va.$main-object-color;
+    left: 20%;
+    width: 15px;
+    height: 15px;
+    animation-delay: 2s;
+    animation-duration: 35s;
+  }
+
+  .circles li:nth-child(10) {
+    border: 1px solid va.$main-object-color;
+    left: 85%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+    animation-duration: 11s;
+  }
+
+  @keyframes animate {
+
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+      border-radius: 0;
+    }
+
+    100% {
+      transform: translateY(-1000px) rotate(720deg);
+      opacity: 0;
+      border-radius: 50%;
+    }
+
   }
 }
 
-/*Scrollテキストの描写*/
-.scrolldown-main span {
-  /*描画位置*/
-  position: absolute;
-  left: -20px;
-  bottom: 10px;
-  /*テキストの形状*/
-  color: va.$base-font-color;
-  font-size: 0.7rem;
-  letter-spacing: 0.05em;
-  /*縦書き設定*/
-  -ms-writing-mode: tb-rl;
-  -webkit-writing-mode: vertical-rl;
-  writing-mode: vertical-rl;
-}
+/*==================================================
+アバウト
+===================================*/
+#about {
+  margin-bottom: 140px;
+  position: relative;
 
-/* 矢印の描写 */
-.scrolldown-main:before {
-  content: "";
-  /*描画位置*/
-  position: absolute;
-  bottom: 0;
-  right: -6px;
-  /*矢印の形状*/
-  width: 1px;
-  height: 20px;
-  background: va.$base-font-color;
-  transform: skewX(-31deg);
-}
+  .about-sec-line {
+    height: 290px;
+    /* 上端に配置する場合は、topを0に設定します。TOPは各セクションによって変わる。 */
+    top: 24%;
 
-.scrolldown-main:after {
-  content: "";
-  /*描画位置*/
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  /*矢印の形状*/
-  width: 1px;
-  height: 50px;
-  background: va.$base-font-color;
-}
-
-// メインビジュアルアニメーション
-.context {
-  width: 100%;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  top: 10%
-}
-
-.context h1 {
-  text-align: center;
-  color: #fff;
-  font-size: 50px;
-}
-
-.area {
-  // background: #c7caff;
-  // background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
-  // width: 100%;
-  height: calc(100vh - va.$header-height);
-}
-
-.circles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.circles li {
-  position: absolute;
-  display: block;
-  list-style: none;
-  width: 20px;
-  height: 20px;
-  background: rgba(255, 255, 255, 0.2);
-  animation: animate 25s linear infinite;
-  bottom: -150px;
-
-}
-
-.circles li:nth-child(1) {
-  border: 1px solid va.$main-object-color;
-  left: 25%;
-  width: 80px;
-  height: 80px;
-  animation-delay: 0s;
-}
-
-
-.circles li:nth-child(2) {
-  border: 1px solid va.$main-object-color;
-  left: 10%;
-  width: 20px;
-  height: 20px;
-  animation-delay: 2s;
-  animation-duration: 12s;
-}
-
-.circles li:nth-child(3) {
-  border: 1px solid va.$main-object-color;
-  left: 70%;
-  width: 20px;
-  height: 20px;
-  animation-delay: 4s;
-}
-
-.circles li:nth-child(4) {
-  border: 1px solid va.$main-object-color;
-  left: 40%;
-  width: 60px;
-  height: 60px;
-  animation-delay: 0s;
-  animation-duration: 18s;
-}
-
-.circles li:nth-child(5) {
-  border: 1px solid va.$main-object-color;
-  left: 65%;
-  width: 20px;
-  height: 20px;
-  animation-delay: 0s;
-}
-
-.circles li:nth-child(6) {
-  border: 1px solid va.$main-object-color;
-  left: 75%;
-  width: 110px;
-  height: 110px;
-  animation-delay: 3s;
-}
-
-.circles li:nth-child(7) {
-  border: 1px solid va.$main-object-color;
-  left: 35%;
-  width: 150px;
-  height: 150px;
-  animation-delay: 7s;
-}
-
-.circles li:nth-child(8) {
-  border: 1px solid va.$main-object-color;
-  left: 50%;
-  width: 25px;
-  height: 25px;
-  animation-delay: 15s;
-  animation-duration: 45s;
-}
-
-.circles li:nth-child(9) {
-  border: 1px solid va.$main-object-color;
-  left: 20%;
-  width: 15px;
-  height: 15px;
-  animation-delay: 2s;
-  animation-duration: 35s;
-}
-
-.circles li:nth-child(10) {
-  border: 1px solid va.$main-object-color;
-  left: 85%;
-  width: 150px;
-  height: 150px;
-  animation-delay: 0s;
-  animation-duration: 11s;
-}
-
-@keyframes animate {
-
-  0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 1;
-    border-radius: 0;
+    @include va.mq(va.$bp-small) {
+      height: 1200px;
+      top: 2%;
+    }
   }
 
-  100% {
-    transform: translateY(-1000px) rotate(720deg);
-    opacity: 0;
-    border-radius: 50%;
+  .sec-title {
+    font-size: 3.25rem;
+    font-weight: normal;
   }
 
-}
+  .sub-sec-title {
+    text-align: center;
+    margin: 80px 0;
+    font-size: 2.25rem;
+    font-weight: normal;
+  }
 
+  .services {
+    display: flex;
+    justify-content: space-between;
+
+    @include va.mq(va.$bp-small) {
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .service {
+      width: 24%;
+      // リリース時は消す
+      border: 1px solid #333;
+      border-radius: 10px;
+      background-color: #fff;
+
+
+      @include va.mq(va.$bp-small) {
+        width: 100%;
+      }
+
+      .sec-no {
+        background-color: va.$accent-color;
+        display: inline-block;
+        padding: 20px;
+        border-radius: 10px 0;
+        color: #fff;
+        font-weight: bold;
+      }
+
+      .sec-frame {
+        text-align: center;
+        margin: 20px 4% 50px;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      .service-name {
+        margin: 40px 0;
+        font-weight: bold;
+      }
+
+      .service-caption {
+        text-align: left;
+
+      }
+    }
+  }
+}
 
 /*==================================================
 フッター
